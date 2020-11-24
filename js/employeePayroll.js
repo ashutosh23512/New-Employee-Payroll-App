@@ -29,7 +29,11 @@ class EmployeePayrollData{
 
     get startDate(){return this._startDate;}
     set startDate(startDate){
-        this._startDate = startDate;
+        const date = new Date();
+        if(startDate <= date && ((date - startDate) / (1000 * 60 * 60 * 24)) <= 30){
+         this._startDate = startDate;
+        }
+        else throw "Enter valid date";
     }
 
     toString(){
